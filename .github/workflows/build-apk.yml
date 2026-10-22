@@ -2,6 +2,11 @@ name: Build APK
 
 on:
   workflow_dispatch:
+    inputs:
+      publish_apk_to_branch:
+        description: 'Commit the built APK to a throwaway branch (debug: sandbox cannot read artifacts)'
+        type: boolean
+        default: false
   push:
     branches: ['**']
   pull_request:
@@ -92,3 +97,18 @@ jobs:
       - name: Fail job if build failed
         if: steps.build.outcome == 'failure'
         run: exit 1
+
+      # TEMPORARY DEBUG: artifact downloads are unreachable from the dev
+      # sandbox, so mirror the APK onto a throwaway branch. Remove once the
+      # artifact can be fetched directly.
+      - name: Publish APK to throwaway branch
+        if: inputs.publish_apk_to_branch
+        run: |
+          git config user.name "ci-bot"
+          git config user.email "ci-bot@users.noreply.github.com"
+          git checkout -B "apk-${{ github.run_id }}"
+          mkdir -p apk
+          cp build/app/outputs/flutter-apk/app-release.apk apk/zimdate-release.apk
+          git add -f apk/zimdate-release.apk
+          git commit -m "ZimDate release APK for run ${{ github.run_id }}"
+          git push -f origin "apk-${{ github.run_id }}"
