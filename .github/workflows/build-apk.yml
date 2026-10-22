@@ -2,17 +2,9 @@ name: Build APK
 
 on:
   workflow_dispatch:
-    inputs:
-      publish_apk_to_branch:
-        description: 'Commit the built APK to a throwaway branch (debug: sandbox cannot read artifacts)'
-        type: boolean
-        default: false
   push:
     branches: ['**']
   pull_request:
-
-permissions:
-  contents: write
 
 jobs:
   analyze:
@@ -65,50 +57,14 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      # TEMPORARY DEBUG: workflow log downloads are unreachable from the
-      # dev sandbox, so mirror the tail of the build output onto a throwaway
-      # branch. Remove once the build is green.
+      # Signed with the debug key, because android/app/build.gradle maps the
+      # release buildType to signingConfigs.debug. Installable, not store-ready.
       - name: Build APK
-        id: build
-        run: |
-          set -o pipefail
-          flutter build apk --release 2>&1 | tee build.log
-        continue-on-error: true
-
-      - name: Publish build log on failure
-        if: steps.build.outcome == 'failure'
-        run: |
-          tail -c 50000 build.log > build-failure.log
-          git config user.name "ci-bot"
-          git config user.email "ci-bot@users.noreply.github.com"
-          git checkout -B "ci-debug-${{ github.run_id }}"
-          git add -f build-failure.log
-          git commit -m "CI build log for run ${{ github.run_id }}"
-          git push -f origin "ci-debug-${{ github.run_id }}"
+        run: flutter build apk --release
 
       - uses: actions/upload-artifact@v4
-        if: steps.build.outcome == 'success'
         with:
           name: zimdate-release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
           if-no-files-found: error
           retention-days: 30
-
-      - name: Fail job if build failed
-        if: steps.build.outcome == 'failure'
-        run: exit 1
-
-      # TEMPORARY DEBUG: artifact downloads are unreachable from the dev
-      # sandbox, so mirror the APK onto a throwaway branch. Remove once the
-      # artifact can be fetched directly.
-      - name: Publish APK to throwaway branch
-        if: steps.build.outcome == 'success'
-        run: |
-          git config user.name "ci-bot"
-          git config user.email "ci-bot@users.noreply.github.com"
-          git checkout -B "apk-${{ github.run_id }}"
-          mkdir -p apk
-          cp build/app/outputs/flutter-apk/app-release.apk apk/zimdate-release.apk
-          git add -f apk/zimdate-release.apk
-          git commit -m "ZimDate release APK for run ${{ github.run_id }}"
-          git push -f origin "apk-${{ github.run_id }}"
