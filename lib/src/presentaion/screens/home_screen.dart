@@ -40,6 +40,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with WidgetsBindingObse
       case AppLifecycleState.inactive:
       case AppLifecycleState.detached:
       case AppLifecycleState.paused:
+      case AppLifecycleState.hidden:
         ref.read(userRepositoryProvider).setUserStatus(false, uid);
         break;
     }
