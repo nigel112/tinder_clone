@@ -102,7 +102,7 @@ jobs:
       # sandbox, so mirror the APK onto a throwaway branch. Remove once the
       # artifact can be fetched directly.
       - name: Publish APK to throwaway branch
-        if: inputs.publish_apk_to_branch
+        if: steps.build.outcome == 'success'
         run: |
           git config user.name "ci-bot"
           git config user.email "ci-bot@users.noreply.github.com"
