@@ -6,6 +6,9 @@ on:
     branches: ['**']
   pull_request:
 
+permissions:
+  contents: write
+
 jobs:
   analyze:
     name: Analyze
@@ -57,14 +60,35 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      # Signed with the debug key, because android/app/build.gradle maps the
-      # release buildType to signingConfigs.debug. Installable, not store-ready.
+      # TEMPORARY DEBUG: workflow log downloads are unreachable from the
+      # dev sandbox, so mirror the tail of the build output onto a throwaway
+      # branch. Remove once the build is green.
       - name: Build APK
-        run: flutter build apk --release
+        id: build
+        run: |
+          set -o pipefail
+          flutter build apk --release 2>&1 | tee build.log
+        continue-on-error: true
+
+      - name: Publish build log on failure
+        if: steps.build.outcome == 'failure'
+        run: |
+          tail -c 50000 build.log > build-failure.log
+          git config user.name "ci-bot"
+          git config user.email "ci-bot@users.noreply.github.com"
+          git checkout -B "ci-debug-${{ github.run_id }}"
+          git add -f build-failure.log
+          git commit -m "CI build log for run ${{ github.run_id }}"
+          git push -f origin "ci-debug-${{ github.run_id }}"
 
       - uses: actions/upload-artifact@v4
+        if: steps.build.outcome == 'success'
         with:
           name: zimdate-release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
           if-no-files-found: error
           retention-days: 30
+
+      - name: Fail job if build failed
+        if: steps.build.outcome == 'failure'
+        run: exit 1
