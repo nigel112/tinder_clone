@@ -48,8 +48,11 @@ jobs:
           channel: stable
           cache: true
 
+      # Best effort: GitHub runners normally ship with the SDK licenses
+      # already accepted. Must never block the build if the probe fails.
       - name: Accept Android SDK licenses
         run: yes | flutter doctor --android-licenses
+        continue-on-error: true
 
       - name: Install dependencies
         run: flutter pub get
