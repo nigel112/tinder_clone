@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tinder_clone/src/presentaion/screens/phone_auth_screen.dart';
+import 'package:zimdate/src/presentaion/screens/phone_auth_screen.dart';
 
-import '../../../common/utils/tinder_icons.dart';
+import '../../../common/utils/zimdate_icons.dart';
 import '../../../common/utils/coloors.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -40,13 +40,13 @@ class LoginScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Icon(
-                            TinderIcons.iconfinder_338_tinder_logo_4375488__1_,
+                            ZimDateIcons.logo,
                             color: Colors.white,
                             size: 100.sp,
                           ),
                           SizedBox(width: 10.w),
                           Text(
-                            "Tinder",
+                            "ZimDate",
                             style: TextStyle(
                                 fontSize: 50.sp,
                                 letterSpacing: 1.2,

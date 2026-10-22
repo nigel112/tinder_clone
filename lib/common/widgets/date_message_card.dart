@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:tinder_clone/common/utils/coloors.dart';
+import 'package:zimdate/common/utils/coloors.dart';
 
 class DateMessageCard extends StatelessWidget {
   const DateMessageCard({Key? key, required this.date}) : super(key: key);

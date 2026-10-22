@@ -45,7 +45,6 @@ class UserRepository {
         liked: userFromDb != null ? userFromDb.liked : [],
         pending: userFromDb != null ? userFromDb.pending : [],
         tags: userFromDb != null ? userFromDb.tags : [],
-        isPrime: userFromDb != null ? userFromDb.isPrime : false,
         fcmToken: userFromDb != null ? userFromDb.fcmToken : token ?? "");
 
     if (userFromDb != null) {

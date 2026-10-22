@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:tinder_clone/common/utils/coloors.dart';
+import 'package:zimdate/common/utils/coloors.dart';
 
 class AlertChatCard extends StatelessWidget {
   const AlertChatCard({

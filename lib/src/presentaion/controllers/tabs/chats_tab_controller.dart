@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:either_dart/either.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tinder_clone/src/application/chat_service.dart';
-import 'package:tinder_clone/src/presentaion/states/user_state.dart';
+import 'package:zimdate/src/application/chat_service.dart';
+import 'package:zimdate/src/presentaion/states/user_state.dart';
 
 import '../../../domain/chat_model.dart';
 

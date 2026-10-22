@@ -3,16 +3,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tinder_clone/src/data/auth_repository.dart';
-import 'package:tinder_clone/src/data/user_repository.dart';
-import 'package:tinder_clone/src/presentaion/controllers/connection_controller.dart';
-import 'package:tinder_clone/src/presentaion/controllers/home_screen_controller.dart';
-import 'package:tinder_clone/src/presentaion/states/message_state.dart';
-import 'package:tinder_clone/src/presentaion/states/user_state.dart';
+import 'package:zimdate/src/data/auth_repository.dart';
+import 'package:zimdate/src/data/user_repository.dart';
+import 'package:zimdate/src/presentaion/controllers/connection_controller.dart';
+import 'package:zimdate/src/presentaion/controllers/home_screen_controller.dart';
+import 'package:zimdate/src/presentaion/states/message_state.dart';
+import 'package:zimdate/src/presentaion/states/user_state.dart';
 
 import '../../../common/helper/show_alert_dialog.dart';
 import '../../../common/utils/coloors.dart';
-import '../../../common/utils/tinder_icons.dart';
+import '../../../common/utils/zimdate_icons.dart';
 import 'tabs/cards_tab_screen.dart';
 import 'tabs/chats_tab_screen.dart';
 import 'tabs/profile_tab_screen.dart';
@@ -124,15 +124,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with WidgetsBindingObse
               tabs: [
                 _buildTab(
                 index: 0,
-                icon: TinderIcons.iconfinder_icons_user2_1564535,
+                icon: ZimDateIcons.user,
               ),
               _buildTab(
                 index: 1,
-                icon: TinderIcons.iconfinder_338_tinder_logo_4375488__1_,
+                icon: ZimDateIcons.logo,
               ),
               _buildTab(
                 index: 2,
-                icon: TinderIcons.iconfinder_message_01_186393,
+                icon: ZimDateIcons.message,
               ),
               ],
               onTap: (index){

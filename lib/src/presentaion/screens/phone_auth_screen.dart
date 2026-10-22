@@ -2,8 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tinder_clone/common/helper/extensions.dart';
-import 'package:tinder_clone/src/presentaion/controllers/phone_login_controller.dart';
+import 'package:zimdate/common/helper/extensions.dart';
+import 'package:zimdate/src/presentaion/controllers/phone_login_controller.dart';
 
 import '../../../common/utils/coloors.dart';
 

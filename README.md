@@ -1,8 +1,8 @@
-# Tinder Clone
+# ZimDate
 
-[Russian Version](https://github.com/LevPrav999/tinder_clone/blob/main/README_RUS.md)
+[Русская версия](README_RUS.md)
 
-Tinder Clone is a mobile application that replicates the popular dating app Tinder. It allows users to create an account, edit their profile, search for other users, and interact with them through swipe and chat features. The app offers features such as phone number registration, profile customization, user search based on location and age, swipe left/right to block or like users, viewing users who liked you, and a chat interface with messages organized by dates.
+ZimDate is a mobile dating application for Zimbabwe. It allows users to create an account, edit their profile, search for other users, and interact with them through swipe and chat features. The app offers features such as phone number registration, profile customization, user search based on location and age, swipe left/right to block or like users, viewing users who liked you, and a chat interface with messages organized by dates.
 
 ## Functionality
 
@@ -20,17 +20,15 @@ Tinder Clone is a mobile application that replicates the popular dating app Tind
    - We have more than 40 tags for you.
 7. **Localization**: Supporting multiple languages.
    - We support languages such as Russian and English
-8. **Tinder Plus**: If you are a Plus user, your name and age will have a yellow shadow in the card.
-   - Plus users' functionality will be expanded in the future.
-9. **Online/Offline Status Display**: Showing online/offline status of users on their cards.
-10. **Internal and external notifications**: If the application is open, you will be notified of new matches in the form of a dialog box. If the application is closed, you will receive notifications. 
-11. **Loading status and error handling**: You will see a spinning indicator during the loading, as well as an error message if something goes wrong.
-12. **Internet connection loss alerts**: You will receive pop-ups to notify you when your internet connection is lost or restored.
+8. **Online/Offline Status Display**: Showing online/offline status of users on their cards.
+9. **Internal and external notifications**: If the application is open, you will be notified of new matches in the form of a dialog box. If the application is closed, you will receive notifications. 
+10. **Loading status and error handling**: You will see a spinning indicator during the loading, as well as an error message if something goes wrong.
+11. **Internet connection loss alerts**: You will receive pop-ups to notify you when your internet connection is lost or restored.
 
 
 ## Planned Updates
 
-In future updates, Tinder Clone plans to introduce the following features and improvements:
+In future updates, ZimDate plans to introduce the following features and improvements:
 
 1. **Profanity Filtering**: Implementing automatic filtering of profane content in messages.
 2. **Message Encryption**: Exploring message encryption capability, considering the need for moderation and positioning the app as a dating platform rather than a fully secure messenger.
@@ -45,7 +43,6 @@ In future updates, Tinder Clone plans to introduce the following features and im
 - **flutter_screenutil**: Adaptation of the interface for various screen sizes and resolutions.
 - **flutter_riverpod**: State management and dependency injection.
 - **image_picker**: Selection and retrieval of images for user profiles.
-- **carousel_slider**: Display of image carousels in user profiles.
 - **flutter_card_swiper**: Implementation of left/right swipe for user selection.
 - **intl**: Localization of dates and numbers for different regions and languages.
 - **uuid**: Generation of unique identifiers for profiles and messages.

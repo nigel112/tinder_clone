@@ -1,4 +1,4 @@
-package ru.levprav.tinder
+package com.zimdate.app
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -64,6 +64,6 @@ class DefaultFirebaseOptions {
     projectId: 'tinder-clone-314b9',
     storageBucket: 'tinder-clone-314b9.appspot.com',
     iosClientId: '236973427812-4cfr1gpofupp520jncf7allvpt10gucc.apps.googleusercontent.com',
-    iosBundleId: 'com.example.tinderClone',
+    iosBundleId: 'com.zimdate.app',
   );
 }

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tinder_clone/common/helper/show_alert_dialog.dart';
+import 'package:zimdate/common/helper/show_alert_dialog.dart';
 
 Future<File?> pickImageFromGallery(BuildContext context) async {
   File? image;

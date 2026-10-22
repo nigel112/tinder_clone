@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tinder_clone/common/utils/coloors.dart';
-import 'package:tinder_clone/src/presentaion/controllers/match_screen_controller.dart';
-import 'package:tinder_clone/src/presentaion/controllers/tabs/cards_tab_controller.dart';
-import 'package:tinder_clone/src/presentaion/controllers/tabs/chats_tab_controller.dart';
+import 'package:zimdate/common/utils/coloors.dart';
+import 'package:zimdate/src/presentaion/controllers/match_screen_controller.dart';
+import 'package:zimdate/src/presentaion/controllers/tabs/cards_tab_controller.dart';
+import 'package:zimdate/src/presentaion/controllers/tabs/chats_tab_controller.dart';
 
 import '../../src/presentaion/states/cards_state.dart';
 import '../repositories/common_messaging_repository.dart';

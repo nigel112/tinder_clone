@@ -15,7 +15,6 @@ class UserModel {
   final List<String> pending;
 
   final List<String> tags;
-  final bool isPrime;
 
   final String fcmToken;
 
@@ -33,7 +32,6 @@ class UserModel {
       required this.liked,
       required this.pending,
       required this.tags,
-      required this.isPrime,
       required this.fcmToken
       });
 
@@ -52,7 +50,6 @@ class UserModel {
       'liked': liked,
       'pending': pending,
       'tags': tags,
-      'isPrime': isPrime,
       'fcmToken': fcmToken
     };
   }
@@ -72,7 +69,6 @@ class UserModel {
         liked: List<String>.from(map['liked']),
         pending: List<String>.from(map['pending']),
         tags: List<String>.from(map['tags']),
-        isPrime: map['isPrime'] ?? false,
         fcmToken: map['fcmToken'] ?? '',
     );
   }

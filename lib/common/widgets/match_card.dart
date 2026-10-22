@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tinder_clone/common/utils/utils.dart';
+import 'package:zimdate/common/utils/utils.dart';
 
 import '../../src/domain/user_model.dart';
 import '../utils/coloors.dart';
@@ -80,10 +80,10 @@ class _MatchCardState extends State<MatchCard> {
                     Text(
                       widget.user.name,
                       style: TextStyle(
-                          shadows: [
+                          shadows: const [
                             Shadow(
-                                color: widget.user.isPrime ? Coloors.sunnyYellow : Colors.black54,
-                                offset: widget.user.isPrime ? const Offset(2.0, 3.0) : const Offset(1.0, 2.0),
+                                color: Colors.black54,
+                                offset: Offset(1.0, 2.0),
                                 blurRadius: 10.0)
                           ],
                           color:  Colors.white,
@@ -96,10 +96,10 @@ class _MatchCardState extends State<MatchCard> {
                     Text(
                       getAge(widget.user.age['year']),
                       style: TextStyle(
-                          shadows: [
+                          shadows: const [
                             Shadow(
-                                color: widget.user.isPrime ? Coloors.sunnyYellow : Colors.black54,
-                                offset: const Offset(1.0, 2.0),
+                                color: Colors.black54,
+                                offset: Offset(1.0, 2.0),
                                 blurRadius: 10.0)
                           ],
                           color: Colors.white,

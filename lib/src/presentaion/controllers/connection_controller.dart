@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:tinder_clone/src/presentaion/states/user_state.dart';
+import 'package:zimdate/src/presentaion/states/user_state.dart';
 
 enum ConnectivityStatus { notDetermined, isConnected, isDisonnected}
 

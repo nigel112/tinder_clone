@@ -5,11 +5,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tinder_clone/common/errors/errors.dart';
-import 'package:tinder_clone/common/repositories/common_firebase_storage_repository.dart';
-import 'package:tinder_clone/src/data/auth_repository.dart';
-import 'package:tinder_clone/src/data/user_repository.dart';
-import 'package:tinder_clone/src/presentaion/states/user_state.dart';
+import 'package:zimdate/common/errors/errors.dart';
+import 'package:zimdate/common/repositories/common_firebase_storage_repository.dart';
+import 'package:zimdate/src/data/auth_repository.dart';
+import 'package:zimdate/src/data/user_repository.dart';
+import 'package:zimdate/src/presentaion/states/user_state.dart';
 import '../../common/repositories/common_messaging_repository.dart';
 import '../domain/user_model.dart';
 

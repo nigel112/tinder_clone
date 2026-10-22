@@ -1,9 +1,8 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tinder_clone/src/presentaion/states/user_state.dart';
+import 'package:zimdate/src/presentaion/states/user_state.dart';
 
 import '../../../../common/utils/coloors.dart';
 import '../../../../common/utils/utils.dart';
@@ -34,7 +33,7 @@ class _ProfileTabScreenState extends ConsumerState<ProfileTabScreen> {
                 clipBehavior: Clip.antiAlias,
                 clipper: MyClipper(),
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.825,
+                  height: MediaQuery.of(context).size.height,
                   decoration: const BoxDecoration(color: Colors.white, boxShadow: [
                     BoxShadow(
                         color: Colors.grey,
@@ -225,85 +224,11 @@ class _ProfileTabScreenState extends ConsumerState<ProfileTabScreen> {
                           ],
                         ),
                       ),
-                      Expanded(flex: 3, child: Container())
+                      Expanded(flex: 2, child: Container())
                     ],
                   ),
                 ),
               ),
-              Positioned(
-                  bottom: 20.h,
-                  child: SizedBox(
-                    height: 180.h,
-                    width: MediaQuery.of(context).size.width,
-                    child: CarouselSlider(
-                      options: CarouselOptions(
-                        height: 150.h,
-                        aspectRatio: 16 / 2,
-                        viewportFraction: 0.8,
-                        enableInfiniteScroll: true,
-                        autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                        autoPlayInterval: const Duration(seconds: 2),
-                        autoPlayCurve: Curves.fastOutSlowIn,
-                        autoPlay: true,
-                        enlargeCenterPage: true,
-                        pauseAutoPlayOnTouch: true,
-                      ),
-                      items: [0, 1, 2, 3, 4, 5].map((i) {
-                        return Builder(
-                          builder: (context) {
-                            return Container(
-                              width: 450.w,
-                              height: 80.h,
-                              margin: const EdgeInsets.all(5.0),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(
-                                      color: Coloors.primaryColor,
-                                      width: 2),
-                                  boxShadow: const [
-                                    BoxShadow(
-                                        color: Colors.grey,
-                                        offset: Offset(0.0, 5.0),
-                                        blurRadius: 10.0)
-                                  ],
-                                  borderRadius: BorderRadius.circular(10.0)),
-                              child: Center(
-                                  child: Padding(
-                                padding: const EdgeInsets.all(6.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: <Widget>[
-                                    Text(
-                                      quotes[i].heading,
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize: 24.sp,
-                                          fontWeight: FontWeight.w700,
-                                          color: Colors.black54),
-                                    ),
-                                    SizedBox(
-                                      height: 1.h,
-                                    ),
-                                    Text(
-                                      quotes[i].baseline,
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize: 16.sp,
-                                          fontWeight: FontWeight.w300,
-                                          color: Colors.black54),
-                                    ),
-                                  ],
-                                ),
-                              )),
-                            );
-                          },
-                        );
-                      }).toList(),
-                    ),
-                  ))
             ],
           );
   }
@@ -326,20 +251,3 @@ class MyClipper extends CustomClipper<Path> {
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
-
-class Quotes {
-  final String heading;
-  final String baseline;
-
-  Quotes(this.heading, this.baseline);
-}
-
-List<Quotes> quotes = [
-  Quotes("get_tinder_gold".tr(), "see_who_likes_you_more".tr()),
-  Quotes("get_matches_faster".tr(), "boost_your_profile_once_a_month".tr()),
-  Quotes("i_meant_to_swipe_right".tr(), "get_unlimited_rewinds_with_tinder_plus".tr()),
-  Quotes("stand_out_with_super_likes".tr(),
-      "youre_3_times_more_likely_to_get_a_match".tr()),
-  Quotes("increase_your_chances".tr(), "get_unlimited_likes_with_tinder_plus".tr()),
-  Quotes("swipe_around_the_world".tr(), "passport_to_anywhere_with_tinder_plus".tr()),
-];

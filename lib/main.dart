@@ -4,9 +4,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tinder_clone/src/application/user_service.dart';
-import 'package:tinder_clone/src/data/auth_repository.dart';
-import 'package:tinder_clone/src/presentaion/states/user_state.dart';
+import 'package:zimdate/src/application/user_service.dart';
+import 'package:zimdate/src/data/auth_repository.dart';
+import 'package:zimdate/src/presentaion/states/user_state.dart';
 
 import 'common/repositories/common_messaging_repository.dart';
 import 'common/widgets/error.dart';
@@ -75,7 +75,7 @@ class _MyAppState extends ConsumerState<MyApp> {
         data: (data) {
           if (data != null) getData(ref, data);
           return MaterialApp(
-            title: 'Flutter Demo',
+            title: 'ZimDate',
             debugShowCheckedModeBanner: false,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
