@@ -20,7 +20,10 @@ class AuthService {
   Future<Either<Failture, void>> signInWithPhone(String phoneNumber) async {
     try {
       return Right(await authRepository.signInWithPhone(phoneNumber));
-    } on NotAutomaticRetrieved catch (e) {
+    } on Failture catch (e) {
+      // Keep the real reason: NotAutomaticRetrieved, or the Firebase error
+      // mapped in AuthRepository. Flattening everything into one generic
+      // string is what made login failures impossible to diagnose.
       return Left(e);
     } catch (e) {
       return Left(ErrorLoginPhone("phone_login_error".tr()));
@@ -32,6 +35,8 @@ class AuthService {
     try {
       await authRepository.verifyCode(verificationId, smsCode);
       return Right(await _updateUserOrNextStep());
+    } on Failture catch (e) {
+      return Left(e);
     } catch (e) {
       return Left(ErrorLoginPhone("invalid_code".tr()));
     }

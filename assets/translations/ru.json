@@ -96,5 +96,14 @@
 "no_tags_error": "Выберите хотя бы одно предпочтение.",
 "updating_tags_error": "Ошибка изменения предпочтений.",
 "internet_bad": "Нет интернета!",
-"internet_good": "Соединение восстановлено"
+"internet_good": "Соединение восстановлено",
+"error_sms_not_allowed": "Вход по SMS недоступен. Включите поставщика «Телефон» и разрешите свой регион в Firebase Console -> Authentication -> Settings -> SMS region policy.",
+"error_invalid_phone_number": "Неверный номер телефона. Проверьте код страны и номер.",
+"error_too_many_requests": "Слишком много попыток для этого номера. Подождите немного и попробуйте снова.",
+"error_sms_quota": "В проекте исчерпана квота SMS. Проверьте Firebase Console.",
+"error_app_not_authorized": "Приложение не авторизовано для Firebase Auth. Проверьте имя пакета и отпечатки SHA-1/SHA-256.",
+"error_billing_required": "Для входа по номеру телефона нужен тариф Firebase с оплатой (Blaze).",
+"error_network": "Ошибка сети. Проверьте подключение и попробуйте снова.",
+"error_code_expired": "Срок действия кода истёк. Запросите новый код.",
+"error_sms_generic": "Не удалось отправить код подтверждения."
 }

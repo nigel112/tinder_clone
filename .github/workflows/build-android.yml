@@ -25,6 +25,11 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      # Blocking: the phone-number normalisation has no other way to be
+      # verified in this environment.
+      - name: Test
+        run: flutter test
+
       # Informational only - never blocks the artifacts.
       - name: Analyze
         run: flutter analyze

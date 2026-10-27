@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:zimdate/common/helper/extensions.dart';
+import 'package:zimdate/common/utils/phone_utils.dart';
 import 'package:zimdate/src/presentaion/controllers/phone_login_controller.dart';
 
 import '../../../common/utils/coloors.dart';
@@ -22,11 +23,42 @@ class _PhoneAuthScreenState extends ConsumerState<PhoneAuthScreen> {
 
   late ProviderSubscription subscription;
 
+  void _refreshPreview() {
+    if (mounted) setState(() {});
+  }
+
+  /// Shows the exact E.164 number Firebase will receive. Worth surfacing:
+  /// a mistyped country code or a stray trunk 0 silently breaks delivery.
+  Widget _buildPreview() {
+    final number = PhoneUtils.build(
+      countryCode: countryCodeController.text,
+      phoneNumber: phoneNumberController.text,
+    );
+    if (number.national.isEmpty) return const SizedBox.shrink();
+
+    return Padding(
+      padding: const EdgeInsets.only(top: 10.0),
+      child: Text(
+        number.e164,
+        style: TextStyle(
+          fontSize: 16.sp,
+          letterSpacing: 1.1,
+          color: PhoneUtils.validate(number) == null
+              ? Colors.black54
+              : Colors.grey.shade400,
+        ),
+      ),
+    );
+  }
+
   @override
   void initState(){
-    countryCodeController = TextEditingController();
+    countryCodeController = TextEditingController(text: kDefaultCountryCode);
     phoneNumberController = TextEditingController();
     super.initState();
+
+    countryCodeController.addListener(_refreshPreview);
+    phoneNumberController.addListener(_refreshPreview);
 
     subscription = ref.listenManual<AsyncValue>(
       phoneLoginScreenProvider,
@@ -117,6 +149,7 @@ class _PhoneAuthScreenState extends ConsumerState<PhoneAuthScreen> {
                             )),
                       ],
                     ),
+                    _buildPreview(),
                     const SizedBox(
                       height: 30,
                     ),

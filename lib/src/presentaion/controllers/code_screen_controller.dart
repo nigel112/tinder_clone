@@ -29,7 +29,7 @@ class CodeScreenNotifier extends AsyncNotifier<String> {
       state = AsyncValue.error(left.message, StackTrace.empty);
     }, (right){
       state = const AsyncValue.data("");
-      subscription!.close();
+      subscription?.close();
       if(right == true){
         Navigator.pushNamedAndRemoveUntil(
             context, HomeScreen.routeName, (route) => false);

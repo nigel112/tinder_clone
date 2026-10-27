@@ -96,5 +96,14 @@
 "no_tags_error": "Select at least one preference.",
 "updating_tags_error": "Error while updating tags.",
 "internet_bad": "No internet connection!",
-"internet_good": "Internet connection restored"
+"internet_good": "Internet connection restored",
+"error_sms_not_allowed": "SMS sign-in is not available. Enable the Phone provider and allow your region in Firebase Console -> Authentication -> Settings -> SMS region policy.",
+"error_invalid_phone_number": "That phone number is not valid. Check the country code and number.",
+"error_too_many_requests": "Too many attempts for this number. Please wait a while and try again.",
+"error_sms_quota": "This project has run out of SMS quota. Check the Firebase Console.",
+"error_app_not_authorized": "This app is not authorised for Firebase Auth. Check the package name and the SHA-1/SHA-256 fingerprints.",
+"error_billing_required": "Phone sign-in needs a billing-enabled Firebase plan (Blaze).",
+"error_network": "Network error. Check your connection and try again.",
+"error_code_expired": "That code has expired. Please request a new one.",
+"error_sms_generic": "Could not send the verification code."
 }
