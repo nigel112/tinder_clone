@@ -34,6 +34,15 @@ In future updates, ZimDate plans to introduce the following features and improve
 2. **Message Encryption**: Exploring message encryption capability, considering the need for moderation and positioning the app as a dating platform rather than a fully secure messenger.
 3. **User Interface Improvements**: Continuously refining the user interface and experience based on user feedback and industry best practices.
 
+## Firebase
+
+The app is wired to a single Firebase project (`tinder-clone-314b9`). The Android
+applicationId (`ru.levprav.tinder`) and the iOS bundle id (`com.example.tinderClone`)
+are deliberately left at their original values: those are the identities already
+registered in that project, and changing them requires registering a new app in the
+Firebase console and re-downloading `google-services.json` / `GoogleService-Info.plist`.
+The ZimDate rename covers everything a user actually sees.
+
 ## Technologies Used
 
 - **firebase_core**: Initialization and setup of Firebase in the app.

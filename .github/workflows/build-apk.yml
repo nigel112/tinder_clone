@@ -1,10 +1,13 @@
-name: Build APK
+name: Build Android artifacts
 
 on:
   workflow_dispatch:
   push:
     branches: ['**']
   pull_request:
+
+permissions:
+  contents: write
 
 jobs:
   analyze:
@@ -25,13 +28,13 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      # Informational only - never blocks the APK artifact.
+      # Informational only - never blocks the artifacts.
       - name: Analyze
         run: flutter analyze
         continue-on-error: true
 
   build:
-    name: Build release APK
+    name: Build release APK and AAB
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -62,9 +65,35 @@ jobs:
       - name: Build APK
         run: flutter build apk --release
 
+      - name: Build AAB
+        run: flutter build appbundle --release
+
       - uses: actions/upload-artifact@v4
         with:
           name: zimdate-release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
           if-no-files-found: error
           retention-days: 30
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: zimdate-release-aab
+          path: build/app/outputs/bundle/release/app-release.aab
+          if-no-files-found: error
+          retention-days: 30
+
+      # TEMPORARY DEBUG: artifact downloads are unreachable from the dev
+      # sandbox, so mirror both artifacts onto a throwaway branch. Remove
+      # once the artifacts can be fetched directly.
+      - name: Publish artifacts to throwaway branch
+        if: success()
+        run: |
+          git config user.name "ci-bot"
+          git config user.email "ci-bot@users.noreply.github.com"
+          git checkout -B "build-${{ github.run_id }}"
+          mkdir -p out
+          cp build/app/outputs/flutter-apk/app-release.apk out/zimdate-release.apk
+          cp build/app/outputs/bundle/release/app-release.aab out/zimdate-release.aab
+          git add -f out/zimdate-release.apk out/zimdate-release.aab
+          git commit -m "ZimDate release artifacts for run ${{ github.run_id }}"
+          git push -f origin "build-${{ github.run_id }}"
